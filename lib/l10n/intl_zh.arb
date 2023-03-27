@@ -1,0 +1,17 @@
+{
+  "@@locale": "zh",
+  "login": "登录",
+  "inputTips": "请输入{name}",
+  "account": "账号",
+  "password": "密码",
+  "changeLanguage": "切换语言",
+  "logOut": "退出登录",
+  "skip": "跳过",
+  "register": "注册",
+  "forgetPassword": "忘记密码",
+  "debugger": "调试器",
+  "changeTheme": "切换主题",
+  "home": "首页",
+  "mine": "我的",
+  "shop": "商城"
+}

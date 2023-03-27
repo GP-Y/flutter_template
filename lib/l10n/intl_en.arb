@@ -1,0 +1,17 @@
+{
+  "@@locale": "en",
+  "login": "login",
+  "inputTips": "please input {name}",
+  "account": "account",
+  "password": "password",
+  "changeLanguage": "change language",
+  "logOut": "log out",
+  "skip": "skip",
+  "register": "register",
+  "forgetPassword": "forget password",
+  "debugger": "debugger",
+  "changeTheme": "change theme",
+  "home": "home",
+  "mine": "mine",
+  "shop": "shop"
+}
