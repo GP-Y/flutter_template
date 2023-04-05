@@ -8,21 +8,23 @@ import 'package:get/get.dart';
 
 class CustomAppBar extends AppBar {
   CustomAppBar({
+    Key? key,
     Widget? title,
     bool? centerTitle,
     Function? onTap,
     List<Widget>? actions,
     bool? showBack,
   }) : super(
+          key: key,
           title: title,
           // backgroundColor: Colors.white,
           centerTitle: centerTitle ?? true,
           actions: actions ?? [],
           leading: showBack ?? true
               ? IconButton(
-                  icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+                  icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
                   onPressed: () => onTap?.call() ?? Get.back(),
                 )
-              : SizedBox.shrink(),
+              : const SizedBox.shrink(),
         );
 }

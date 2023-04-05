@@ -1,10 +1,9 @@
-{
+const Map<String, String> app_zh = {
   "@@locale": "zh",
   "login": "登录",
-  "inputTips": "请输入{name}",
+  "inputTips": "请输入",
   "account": "账号",
   "password": "密码",
-  "changeLanguage": "切换语言",
   "logOut": "退出登录",
   "skip": "跳过",
   "register": "注册",
@@ -13,5 +12,10 @@
   "changeTheme": "切换主题",
   "home": "首页",
   "mine": "我的",
-  "shop": "商城"
-}
+  "shop": "商城",
+  "darkTheme": "深色主题",
+  "lightTheme": "浅色主题",
+  "followSystem": "跟随系统",
+  "chinese": "中文",
+  "english": "英文",
+};

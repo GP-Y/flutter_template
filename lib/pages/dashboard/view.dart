@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_template/pages/shop/view.dart';
 
 import '../../gen/assets.gen.dart';
-import '../../l10n/generated/l10n.dart';
+import '../../l10n/localizations.dart';
 import '../home/view.dart';
 import '../mine/view.dart';
 
@@ -38,14 +38,14 @@ class DashboardPage extends GetView<DashboardLogic> {
         showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(
-            label: S.current.home,
+            label: AppLocalizations.home,
             icon: Column(children: [
               Assets.images.home.image(
                 width: 25.w,
                 height: 25.w,
               ),
               Text(
-                S.current.home,
+                AppLocalizations.home,
                 style: const TextStyle(color: Colors.black),
               ),
             ]),
@@ -56,20 +56,20 @@ class DashboardPage extends GetView<DashboardLogic> {
                 color: Colors.blueAccent,
               ),
               Text(
-                S.current.home,
+                AppLocalizations.home,
                 style: const TextStyle(color: Colors.blueAccent),
               ),
             ]),
           ),
           BottomNavigationBarItem(
-            label:  S.current.shop,
+            label:  AppLocalizations.shop,
             icon: Column(children: [
               Assets.images.shop.image(
                 width: 25.w,
                 height: 25.w,
               ),
               Text(
-                S.current.shop,
+                AppLocalizations.shop,
                 style: const TextStyle(color: Colors.black),
               ),
             ]),
@@ -80,20 +80,20 @@ class DashboardPage extends GetView<DashboardLogic> {
                 color: Colors.blueAccent,
               ),
               Text(
-                S.current.shop,
+                AppLocalizations.shop,
                 style: const TextStyle(color: Colors.blueAccent),
               ),
             ]),
           ),
           BottomNavigationBarItem(
-            label: S.current.mine,
+            label: AppLocalizations.mine,
             icon: Column(children: [
               Assets.images.mine.image(
                 width: 25.w,
                 height: 25.w,
               ),
               Text(
-                S.current.mine,
+                AppLocalizations.mine,
                 style: const TextStyle(color: Colors.black),
               ),
             ]),
@@ -104,7 +104,7 @@ class DashboardPage extends GetView<DashboardLogic> {
                 color: Colors.blueAccent,
               ),
               Text(
-                S.current.mine,
+                AppLocalizations.mine,
                 style: const TextStyle(color: Colors.blueAccent),
               ),
             ]),

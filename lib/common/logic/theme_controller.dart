@@ -7,9 +7,9 @@ import 'package:get_template/common/common.dart';
 /// @description:  主题控制器
 
 class ThemeController extends ChangeNotifier {
-  ThemeController._();
-
   static ThemeController? _instance;
+
+  ThemeController._();
 
   factory ThemeController() => _instance ??= ThemeController._();
 
@@ -17,11 +17,11 @@ class ThemeController extends ChangeNotifier {
 
   ///获取当前主题
   ThemeMode currentTheme() {
-    final String? currentTheme = LocalStorage().get(
+    final String? currentTheme = StorageUtil().get(
       StorageKey.currentTheme,
     );
     if (currentTheme == null) {
-      LocalStorage().set(StorageKey.themeFollowSystem, true);
+      StorageUtil().set(StorageKey.themeFollowSystem, true);
       final Brightness brightness =
           WidgetsBinding.instance.window.platformBrightness;
       isDarkTheme = brightness == Brightness.dark;
@@ -39,22 +39,22 @@ class ThemeController extends ChangeNotifier {
 
   ///设置主题为浅色
   void themeLight() {
-    LocalStorage().set(StorageKey.currentTheme, ThemeMode.light.toString());
-    LocalStorage().set(StorageKey.themeFollowSystem, false);
+    StorageUtil().set(StorageKey.currentTheme, ThemeMode.light.toString());
+    StorageUtil().set(StorageKey.themeFollowSystem, false);
     notifyListeners();
   }
 
   ///设置主题为深色
   void themeDark() {
-    LocalStorage().set(StorageKey.currentTheme, ThemeMode.dark.toString());
-    LocalStorage().set(StorageKey.themeFollowSystem, false);
+    StorageUtil().set(StorageKey.currentTheme, ThemeMode.dark.toString());
+    StorageUtil().set(StorageKey.themeFollowSystem, false);
     notifyListeners();
   }
 
   ///设置主题跟随系统
   void themeFollowSystem() {
-    LocalStorage().set(StorageKey.themeFollowSystem, true);
-    LocalStorage().remove(StorageKey.currentTheme);
+    StorageUtil().set(StorageKey.themeFollowSystem, true);
+    StorageUtil().remove(StorageKey.currentTheme);
     notifyListeners();
   }
 }

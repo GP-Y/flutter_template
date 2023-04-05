@@ -13,17 +13,6 @@ import '../network/client.dart';
 class Global {
   Global._();
 
-  ///记录应用是否使用过
-  static void deviceAlreadyOpen() {
-    final bool? deviceAlreadyOpen =
-        LocalStorage().get(StorageKey.deviceAlreadyOpen);
-    if (deviceAlreadyOpen == null || !deviceAlreadyOpen) {
-      LocalStorage().set(StorageKey.deviceAlreadyOpen, true);
-    } else {
-      LogKit.i('deviceAlreadyOpen: $deviceAlreadyOpen');
-    }
-  }
-
   ///初始化应用
   static Future init() async {
     ///运行初始
@@ -44,9 +33,20 @@ class Global {
     );
 
     ///本地存储初始化
-    await LocalStorage.init();
+    await StorageUtil.init();
 
     ///读取设备第一次打开
-    deviceAlreadyOpen();
+    await deviceAlreadyOpen();
+  }
+
+  ///记录应用是否使用过
+  static Future<void> deviceAlreadyOpen() async {
+    final bool? deviceAlreadyOpen =
+        await StorageUtil().get(StorageKey.deviceAlreadyOpen);
+    if (deviceAlreadyOpen == null || !deviceAlreadyOpen) {
+      await StorageUtil().set(StorageKey.deviceAlreadyOpen, true);
+    } else {
+      LogUtil.i('deviceAlreadyOpen: $deviceAlreadyOpen');
+    }
   }
 }

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_template/common/common.dart';
-import 'package:get_template/l10n/generated/l10n.dart';
-import 'package:get_template/network/token_kit.dart';
 import 'package:get_template/router/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_template/widgets/custom_app_bar.dart';
 
+import '../../l10n/localizations.dart';
+import '../../network/token_util.dart';
 import 'logic.dart';
 
 class MinePage extends GetView<MineLogic> {
@@ -23,15 +23,15 @@ class MinePage extends GetView<MineLogic> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
-              child: Text(S.current.logOut),
+              child: Text(AppLocalizations.logOut),
               onPressed: () {
-                TokenKit().clearToken();
+                TokenUtil().clearToken();
                 Get.offAllNamed(AppRoutes.login);
               },
             ),
             TextButton(
               child: Text(
-                S.current.debugger,
+                AppLocalizations.debugger,
                 style: themeData.textTheme.caption,
               ),
               onPressed: () {
@@ -39,21 +39,33 @@ class MinePage extends GetView<MineLogic> {
               },
             ),
             TextButton(
-              child: Text('深色主题'),
+              child: Text(AppLocalizations.darkTheme),
               onPressed: () {
                 ThemeController().themeDark();
               },
             ),
             TextButton(
-              child: Text('浅色主题'),
+              child: Text(AppLocalizations.lightTheme),
               onPressed: () {
                 ThemeController().themeLight();
               },
             ),
             TextButton(
-              child: Text('跟随系统'),
+              child:  Text(AppLocalizations.followSystem),
               onPressed: () {
                 ThemeController().themeFollowSystem();
+              },
+            ),
+            TextButton(
+              child: Text(AppLocalizations.chinese),
+              onPressed: () {
+                AppLocalizations.changeLanguage(const Locale('zh', 'CN'));
+              },
+            ),
+            TextButton(
+              child: Text(AppLocalizations.english),
+              onPressed: () {
+                AppLocalizations.changeLanguage(const Locale('en', 'US'));
               },
             ),
           ],

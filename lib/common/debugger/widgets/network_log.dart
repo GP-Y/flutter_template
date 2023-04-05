@@ -81,7 +81,7 @@ class NetworkService {
   }
 
   static void init() {
-    LogKit.i('NetworkServices init');
+    LogUtil.i('NetworkServices init');
     if (_instance == null) {
       _instance = NetworkService._();
     }

@@ -2,12 +2,12 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// 本地存储-单例模式
-class LocalStorage {
-  LocalStorage._();
+class StorageUtil {
+  static StorageUtil? _instance;
 
-  static LocalStorage? _instance;
+  StorageUtil._();
 
-  factory LocalStorage() => _instance ?? LocalStorage._();
+  factory StorageUtil() => _instance ?? StorageUtil._();
 
   static late SharedPreferences _prefs;
 

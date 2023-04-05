@@ -5,26 +5,26 @@ import 'package:get_template/common/utils/utils.dart';
 /// @author clover
 /// @description: token管理
 
-class TokenKit {
+class TokenUtil {
   static const _tokenKey = "Token";
-  static TokenKit? _tokenKit;
+  static TokenUtil? _tokenKit;
 
-  TokenKit._();
+  TokenUtil._();
 
-  factory TokenKit() {
-    _tokenKit ??= TokenKit._();
+  factory TokenUtil() {
+    _tokenKit ??= TokenUtil._();
     return _tokenKit!;
   }
 
   void saveToken(String? token) {
-    LocalStorage().set(_tokenKey, token);
+    StorageUtil().set(_tokenKey, token);
   }
 
   String? getToken() {
-    return LocalStorage().get(_tokenKey);
+    return StorageUtil().get(_tokenKey);
   }
 
   void clearToken() {
-    LocalStorage().remove(_tokenKey);
+    StorageUtil().remove(_tokenKey);
   }
 }

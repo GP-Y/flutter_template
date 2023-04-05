@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:get_template/l10n/generated/l10n.dart';
 
+import '../../l10n/localizations.dart';
 import 'logic.dart';
 
 class LoginPage extends GetView<LoginLogic> {
@@ -40,25 +40,6 @@ class LoginPage extends GetView<LoginLogic> {
             child: _buildLoginInput(themeData),
           ),
         ),
-        Positioned(
-          top: 35,
-          right: 15,
-          child: GestureDetector(
-            behavior: HitTestBehavior.translucent,
-            onTap: () {
-              // LocaleKit().changeLocale();
-              S.load(Locale('en'));
-              controller.update();
-            },
-            child: Row(children: [
-              const Icon(Icons.repeat, color: Colors.white, size: 18),
-              Text(
-                S.current.changeLanguage,
-                style: const TextStyle(color: Colors.white),
-              )
-            ]),
-          ),
-        )
       ]),
     );
   }
@@ -81,13 +62,14 @@ class LoginPage extends GetView<LoginLogic> {
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
           style: const TextStyle(fontSize: 14),
           decoration: InputDecoration(
-            hintText: S.current.inputTips(S.current.account),
+            hintText:
+                '${AppLocalizations.inputTips}${AppLocalizations.account}',
             hintStyle: themeData.textTheme.caption,
             border: InputBorder.none,
             icon: const Padding(
               padding: EdgeInsets.all(5),
               child:
-              Icon(Icons.account_box, color: Color(0xff999999), size: 16),
+                  Icon(Icons.account_box, color: Color(0xff999999), size: 16),
             ),
           ),
         ),
@@ -108,7 +90,8 @@ class LoginPage extends GetView<LoginLogic> {
             ],
             style: const TextStyle(fontSize: 14),
             decoration: InputDecoration(
-              hintText: S.current.inputTips(S.current.password),
+              hintText:
+                  '${AppLocalizations.inputTips}${AppLocalizations.password}',
               hintStyle: themeData.textTheme.caption,
               border: InputBorder.none,
               icon: const Padding(
@@ -139,14 +122,14 @@ class LoginPage extends GetView<LoginLogic> {
           GestureDetector(
             onTap: () {},
             child: Text(
-              S.current.register,
+              AppLocalizations.register,
               style: const TextStyle(fontSize: 12, color: Color(0xff999999)),
             ),
           ),
           GestureDetector(
             onTap: () {},
             child: Text(
-              S.current.forgetPassword,
+              AppLocalizations.forgetPassword,
               style: const TextStyle(fontSize: 12, color: Color(0xff999999)),
             ),
           ),
@@ -163,7 +146,7 @@ class LoginPage extends GetView<LoginLogic> {
             borderRadius: BorderRadius.circular(22.5),
           ),
           child: Text(
-            S.current.login,
+            AppLocalizations.login,
             style: const TextStyle(
               fontSize: 16,
               color: Colors.white,

@@ -22,7 +22,7 @@ class _SystemLogState extends State<SystemLog> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      _streamSubscription = LogKit.addLogListener((event, stream) {
+      _streamSubscription = LogUtil.addLogListener((event, stream) {
         setState(() {});
       });
     });
@@ -88,14 +88,14 @@ class _SystemLogState extends State<SystemLog> {
 
 class SystemLogService {
   SystemLogService._() {
-    LogKit.addLogListener((event, stream) {
+    LogUtil.addLogListener((event, stream) {
       logList.add(event);
       if (logList.length > 100) logList.removeAt(0);
     });
   }
 
   static void init() {
-    LogKit.i('SystemLogService init');
+    LogUtil.i('SystemLogService init');
     if (_instance == null) {
       _instance = SystemLogService._();
     }

@@ -28,7 +28,7 @@ class _ProxySettingState extends State<ProxySetting> {
   }
 
   void saveProxy() async {
-    if (!BaseKit.checkIp(ipEdit.text)) {
+    if (!BaseUtil.checkIp(ipEdit.text)) {
       showToast("ip地址格式有误！");
       return;
     }

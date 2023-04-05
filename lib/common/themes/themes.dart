@@ -29,7 +29,7 @@ final themeLight = ThemeData.light().copyWith(
   textTheme: TextTheme(
     caption: TextStyle(color: Colors.grey, fontSize: 14.sp),
   ),
-  tabBarTheme: TabBarTheme(),
+  tabBarTheme: const TabBarTheme(),
 );
 
 final themeDark = ThemeData.dark().copyWith(
@@ -54,6 +54,6 @@ final themeDark = ThemeData.dark().copyWith(
   textTheme: TextTheme(
     caption: TextStyle(color: Colors.white, fontSize: 14.sp),
   ),
-  tabBarTheme: TabBarTheme(),
+  tabBarTheme: const TabBarTheme(),
 );
 

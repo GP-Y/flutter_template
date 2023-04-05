@@ -1,6 +1,6 @@
 // 项目中常用的工具类
-class BaseKit{
-  BaseKit._();
+class BaseUtil{
+  BaseUtil._();
 
   /// 验证ip地址
   static bool checkIp(String ip) {

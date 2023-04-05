@@ -1,10 +1,9 @@
-{
+const Map<String, String> app_en = {
   "@@locale": "en",
   "login": "login",
-  "inputTips": "please input {name}",
+  "inputTips": "please input",
   "account": "account",
   "password": "password",
-  "changeLanguage": "change language",
   "logOut": "log out",
   "skip": "skip",
   "register": "register",
@@ -13,5 +12,10 @@
   "changeTheme": "change theme",
   "home": "home",
   "mine": "mine",
-  "shop": "shop"
-}
+  "shop": "shop",
+  "darkTheme": "Dark theme",
+  "lightTheme": "Light theme",
+  "followSystem": "Follow system",
+  "chinese": "Chinese",
+  "english": "English",
+};

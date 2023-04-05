@@ -8,7 +8,7 @@ class BuildErrorWidget extends StatelessWidget {
 
   static void takeOver() {
     ErrorWidget.builder = (FlutterErrorDetails d) {
-      LogKit.e('Error has been delivered to the ErrorWidget: ${d.exception}');
+      LogUtil.e('Error has been delivered to the ErrorWidget: ${d.exception}');
       return BuildErrorWidget._(d);
     };
   }

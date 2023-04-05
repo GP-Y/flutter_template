@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_template/l10n/generated/l10n.dart';
 import 'package:get_template/router/app_pages.dart';
 import 'package:get/get.dart';
 
+import '../../l10n/localizations.dart';
 import 'logic.dart';
 
 class SplashPage extends GetView<SplashLogic> {
@@ -33,8 +33,8 @@ class SplashPage extends GetView<SplashLogic> {
               height: 35.w,
               alignment: Alignment.center,
               child: Obx(
-                    () => Text(
-                  '${S.current.skip} ${controller.countdownTime.value}s',
+                () => Text(
+                  '${AppLocalizations.skip} ${controller.countdownTime.value}s',
                   style: const TextStyle(color: Colors.white),
                 ),
               ),

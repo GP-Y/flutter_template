@@ -46,22 +46,22 @@ class RequestClient {
 
   /// 设置代理
   Future<void> setProxy(String ip, int port) async {
-    await LocalStorage().set(_keyProxyIp, ip);
-    await LocalStorage().set(_keyProxyPort, port);
+    await StorageUtil().set(_keyProxyIp, ip);
+    await StorageUtil().set(_keyProxyPort, port);
     await _reset();
   }
 
   /// 获取当前代理设置
   Tuple2<String?, int?> getProxy() {
-    final ip = LocalStorage().get(_keyProxyIp);
-    final port = LocalStorage().get(_keyProxyPort);
+    final ip = StorageUtil().get(_keyProxyIp);
+    final port = StorageUtil().get(_keyProxyPort);
     return Tuple2(ip, port);
   }
 
   ///清除代理设置
   Future<void> clearProxy() async {
-    await LocalStorage().remove(_keyProxyIp);
-    await LocalStorage().remove(_keyProxyPort);
+    await StorageUtil().remove(_keyProxyIp);
+    await StorageUtil().remove(_keyProxyPort);
     await _reset();
   }
 
@@ -93,8 +93,8 @@ class RequestClient {
     ]);
     (_dio!.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
         (client) {
-      var proxyIp = LocalStorage().get(_keyProxyIp);
-      var proxyPort = LocalStorage().get(_keyProxyPort);
+      var proxyIp = StorageUtil().get(_keyProxyIp);
+      var proxyPort = StorageUtil().get(_keyProxyPort);
       client.findProxy = (uri) {
         if (proxyIp != null && proxyPort != null) {
           return "PROXY $proxyIp:$proxyPort";
@@ -116,7 +116,7 @@ class RequestClient {
     CachePriority? cachePriority,
     ProgressCallback? onReceiveProgress,
   }) async {
-    LogKit.i(
+    LogUtil.i(
       'token:token\n'
       'path:$path\n'
       'params:$queryParameters\n',
@@ -128,7 +128,7 @@ class RequestClient {
       cancelToken: cancelToken,
       onReceiveProgress: onReceiveProgress,
     );
-    LogKit.i(response.data);
+    LogUtil.i(response.data);
     return _resolveResponse(response);
   }
 
@@ -143,7 +143,7 @@ class RequestClient {
     ProgressCallback? onSendProgress,
     ProgressCallback? onReceiveProgress,
   }) async {
-    LogKit.i(
+    LogUtil.i(
       'token:token\n'
       'path:$path\n'
       'params:$queryParameters\n'
@@ -228,7 +228,7 @@ class RequestClient {
   /// 将response转换为ApiResult
   ApiResult? _resolveResponse(Response response) {
     if (response.statusCode == HttpStatus.ok) {
-      LogKit.i('请求结果：${response.data}');
+      LogUtil.i('请求结果：${response.data}');
       return ApiResult.fromJsonMap(response.data);
     } else {
       throw RequestError(

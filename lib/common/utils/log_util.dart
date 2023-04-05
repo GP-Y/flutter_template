@@ -13,8 +13,8 @@ typedef LogFunction = void Function(
 
 typedef Supplier<T> = FutureOr<T> Function();
 
-class LogKit {
-  const LogKit._();
+class LogUtil {
+  const LogUtil._();
 
   static const String logTag = 'LOG';
 

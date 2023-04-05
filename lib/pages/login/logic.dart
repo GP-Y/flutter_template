@@ -22,7 +22,7 @@ class LoginLogic extends BaseController {
   //登录
   login() async {
     FocusScope.of(Get.context!).requestFocus(FocusNode());
-    LogKit.i('account: 帐号信息');
+    LogUtil.i('account: 帐号信息');
     Get.offAndToNamed(AppRoutes.dashboard);
   }
 
