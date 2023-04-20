@@ -8,7 +8,7 @@ https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPIn
 https://www.ibabbleon.com/iOS-Language-Codes-ISO-639.html
 */
 
-class TranslationUtil extends Translations {
+class TranslationImpl extends Translations {
 
   @override
   Map<String, Map<String, String>> get keys => {

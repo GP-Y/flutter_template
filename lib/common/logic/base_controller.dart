@@ -13,10 +13,6 @@ class BaseController extends GetxController with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
   }
 
-  @override
-  void onReady() {
-    super.onReady();
-  }
 
   @override
   void onClose() {

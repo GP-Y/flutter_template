@@ -13,6 +13,9 @@ class ThemeController extends ChangeNotifier {
 
   factory ThemeController() => _instance ??= ThemeController._();
 
+  final Brightness brightness =
+      WidgetsBinding.instance.window.platformBrightness;
+
   late bool isDarkTheme; //是否是深色主题
 
   ///获取当前主题
@@ -22,8 +25,6 @@ class ThemeController extends ChangeNotifier {
     );
     if (currentTheme == null) {
       StorageUtil().set(StorageKey.themeFollowSystem, true);
-      final Brightness brightness =
-          WidgetsBinding.instance.window.platformBrightness;
       isDarkTheme = brightness == Brightness.dark;
       return ThemeMode.system;
     } else {
