@@ -32,7 +32,6 @@ class _SystemLogState extends State<SystemLog> {
   Widget build(BuildContext context) {
     return Stack(children: [
       ListView.builder(
-        reverse: true,
         itemCount: SystemLogService.logList.length,
         itemBuilder: (context, index) {
           return Card(
@@ -45,17 +44,17 @@ class _SystemLogState extends State<SystemLog> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Text(
-                    '${SystemLogService.logList[index].tag}',
-                    style: TextStyle(fontSize: 14, color: Colors.blueAccent),
+                    SystemLogService.logList[index].tag,
+                    style: const TextStyle(fontSize: 14, color: Colors.blueAccent),
                   ),
                   const SizedBox(height: 8.0),
                   Text(
-                    '${SystemLogService.logList[index].time}',
-                    style: TextStyle(fontSize: 14, color: Colors.black),
+                    SystemLogService.logList[index].time,
+                    style: const TextStyle(fontSize: 14, color: Colors.black),
                   ),
                   Text(
                     '${SystemLogService.logList[index].message}',
-                    style: TextStyle(fontSize: 14, color: Colors.black),
+                    style: const TextStyle(fontSize: 14, color: Colors.black),
                   ),
                 ],
               ),
@@ -96,9 +95,7 @@ class SystemLogService {
 
   static void init() {
     LogUtil.i('SystemLogService init');
-    if (_instance == null) {
-      _instance = SystemLogService._();
-    }
+    _instance ??= SystemLogService._();
   }
 
   static List<LogEvent> logList = [];

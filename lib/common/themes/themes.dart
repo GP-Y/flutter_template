@@ -22,6 +22,7 @@ final themeLight = ThemeData.light().copyWith(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
+    isCollapsed: true,
     border: InputBorder.none,
     enabledBorder: InputBorder.none,
     hintStyle: TextStyle(color: Colors.grey, fontSize: 14.sp),
@@ -47,13 +48,13 @@ final themeDark = ThemeData.dark().copyWith(
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
+    isCollapsed: true,
     border: InputBorder.none,
     enabledBorder: InputBorder.none,
     hintStyle: TextStyle(color: Colors.grey, fontSize: 14.sp),
   ),
   textTheme: TextTheme(
-    caption: TextStyle(color: Colors.white, fontSize: 14.sp),
+    caption: TextStyle(color: Colors.grey.shade500, fontSize: 14.sp),
   ),
   tabBarTheme: const TabBarTheme(),
 );
-

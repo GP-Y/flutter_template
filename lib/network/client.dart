@@ -3,65 +3,66 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
+import 'package:get_template/common/hive/base_info_box.dart';
 import 'package:get_template/common/utils/utils.dart';
+import 'package:get_template/config.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
+
+import '../common/debugger/widgets/network_log.dart';
+import '../common/queue/initialize_queue.dart';
+import 'auth_interceptor.dart';
 
 /// @fileName: client
 /// @date: 2023/2/9 01:29
 /// @author clover
 /// @description: 网络请求封装
 
-class RequestClient {
+class RequestClient with InitializeTask {
+  static RequestClient instance = RequestClient._();
+
   RequestClient._();
 
-  static RequestClient? _client;
+  Dio? _dio; //dio实例，网络请求的核心
 
-  factory RequestClient() {
-    _client ??= RequestClient._();
-    return _client!;
-  }
-
-  final _keyProxyIp = "DIO_PROXY_IP";
-
-  final _keyProxyPort = "DIO_PROXY_PORT";
-
-  Dio? _dio;
-
-  String? baseUrl;
+  String? _baseUrl; //基础url
 
   late final CacheOptions _cacheOptions;
 
+  /// 拦截器
   final Set<Interceptor> _interceptors = {};
 
   /// 初始化
-  Future<void> setupWithInterceptors({
-    required String baseUrl,
-    required List<Interceptor> interceptors,
-  }) async {
-    this.baseUrl = baseUrl;
-    _interceptors.addAll(interceptors);
-    await _reset(baseUrl: baseUrl);
+  Future<void> init() async {
+    _baseUrl = Config.apiUrl;
+    _interceptors.add(AuthInterceptor());
+    _interceptors.add(LogInterceptor());
+    _interceptors.add(NetworkLogInterceptor());
+    await _reset(baseUrl: _baseUrl);
+  }
+
+  void clearAllRequest() {
+    _reset();
   }
 
   /// 设置代理
   Future<void> setProxy(String ip, int port) async {
-    await StorageUtil().set(_keyProxyIp, ip);
-    await StorageUtil().set(_keyProxyPort, port);
+    BaseInfoBox.instance.proxyIp = ip;
+    BaseInfoBox.instance.proxyPort = port;
     await _reset();
   }
 
   /// 获取当前代理设置
   Tuple2<String?, int?> getProxy() {
-    final ip = StorageUtil().get(_keyProxyIp);
-    final port = StorageUtil().get(_keyProxyPort);
+    final ip = BaseInfoBox.instance.proxyIp;
+    final port = BaseInfoBox.instance.proxyPort;
     return Tuple2(ip, port);
   }
 
   ///清除代理设置
   Future<void> clearProxy() async {
-    await StorageUtil().remove(_keyProxyIp);
-    await StorageUtil().remove(_keyProxyPort);
+    BaseInfoBox.instance.proxyIp = null;
+    BaseInfoBox.instance.proxyPort = null;
     await _reset();
   }
 
@@ -72,14 +73,15 @@ class RequestClient {
   }
 
   Future<void> _reset({String? baseUrl}) async {
-    final String? url = baseUrl ?? this.baseUrl;
+    final String? url = baseUrl ?? _baseUrl;
     if (url == null) {
-      throw RequestError(message: "baseUrl 不能为空！");
+      throw RequestError(message: "base url is null");
     }
     _dio?.close(force: true);
-    _dio = Dio(
-      BaseOptions(baseUrl: url, receiveTimeout: Duration(seconds: 30)),
-    );
+    _dio = Dio(BaseOptions(
+      baseUrl: url,
+      receiveTimeout: const Duration(seconds: 30),
+    ));
     _dio!.interceptors.clear();
     var dir = await getTemporaryDirectory();
     _cacheOptions = CacheOptions(
@@ -88,13 +90,13 @@ class RequestClient {
     );
     _dio!.interceptors.addAll([
       // CookieManager(CookieJar()),
+      ..._interceptors,
       DioCacheInterceptor(options: _cacheOptions),
-      ..._interceptors
     ]);
     (_dio!.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
         (client) {
-      var proxyIp = StorageUtil().get(_keyProxyIp);
-      var proxyPort = StorageUtil().get(_keyProxyPort);
+      var proxyIp = BaseInfoBox.instance.proxyIp;
+      var proxyPort = BaseInfoBox.instance.proxyPort;
       client.findProxy = (uri) {
         if (proxyIp != null && proxyPort != null) {
           return "PROXY $proxyIp:$proxyPort";
@@ -117,7 +119,7 @@ class RequestClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     LogUtil.i(
-      'token:token\n'
+      'token:${BaseInfoBox.instance.token}\n'
       'path:$path\n'
       'params:$queryParameters\n',
     );
@@ -128,7 +130,6 @@ class RequestClient {
       cancelToken: cancelToken,
       onReceiveProgress: onReceiveProgress,
     );
-    LogUtil.i(response.data);
     return _resolveResponse(response);
   }
 
@@ -144,7 +145,7 @@ class RequestClient {
     ProgressCallback? onReceiveProgress,
   }) async {
     LogUtil.i(
-      'token:token\n'
+      'token:${BaseInfoBox.instance.token}\n'
       'path:$path\n'
       'params:$queryParameters\n'
       'body:$data',
@@ -256,6 +257,11 @@ class RequestClient {
       }
     }
     return customOptions;
+  }
+
+  @override
+  Future<void> onTask() async {
+    await init();
   }
 }
 

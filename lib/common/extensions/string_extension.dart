@@ -1,4 +1,4 @@
-import 'package:get_template/common/extensions/extensions.dart';
+import 'date_extension.dart';
 import 'package:intl/intl.dart';
 
 /// @fileName: string_extension

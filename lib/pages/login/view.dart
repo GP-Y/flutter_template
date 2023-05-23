@@ -60,7 +60,7 @@ class LoginPage extends GetView<LoginLogic> {
           ],
           //键盘类型
           keyboardType: const TextInputType.numberWithOptions(decimal: true),
-          style: const TextStyle(fontSize: 14),
+          style: const TextStyle().copyWith(fontSize: 14),
           decoration: InputDecoration(
             hintText:
                 '${AppLocalizations.inputTips}${AppLocalizations.account}',
@@ -88,7 +88,7 @@ class LoginPage extends GetView<LoginLogic> {
             inputFormatters: const [
               //FilteringTextInputFormatter.allow(RegExp("[0-9]")), //只允许输入整数
             ],
-            style: const TextStyle(fontSize: 14),
+            style: const TextStyle().copyWith(fontSize: 14),
             decoration: InputDecoration(
               hintText:
                   '${AppLocalizations.inputTips}${AppLocalizations.password}',

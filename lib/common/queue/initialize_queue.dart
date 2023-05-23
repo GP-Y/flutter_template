@@ -5,6 +5,7 @@ import 'package:get_template/common/common.dart';
 /// @author clover
 /// @description: 初始化队列,用于初始化一些需要在app启动时执行的任务
 
+
 class InitializeQueue {
   static final InitializeQueue instance = InitializeQueue._();
 

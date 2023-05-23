@@ -1,5 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:get_template/common/common.dart';
 import 'package:get_template/widgets/not_found_view.dart';
 
 import '../pages/dashboard/binding.dart';
@@ -17,6 +18,9 @@ part 'app_routes.dart';
 
 class AppPages {
   static const splash = AppRoutes.splash;
+
+  /// 不需要登录即可访问的路由
+  static List<String> noNeedLoginList = [];
 
   static final routes = [
     GetPage(
@@ -50,4 +54,9 @@ class AppPages {
     name: AppRoutes.notFound,
     page: () => const NotFoundPage(),
   );
+
+  /// 路由拦截
+  static void handleOnGenerateRoute(RouteSettings settings) {
+    LogUtil.d(settings.name);
+  }
 }

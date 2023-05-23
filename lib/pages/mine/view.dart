@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get_template/common/common.dart';
+import 'package:get_template/common/hive/base_info_box.dart';
 import 'package:get_template/router/app_pages.dart';
 import 'package:get/get.dart';
 import 'package:get_template/widgets/custom_app_bar.dart';
 
 import '../../l10n/localizations.dart';
-import '../../network/token_util.dart';
 import 'logic.dart';
 
 class MinePage extends GetView<MineLogic> {
@@ -25,7 +25,7 @@ class MinePage extends GetView<MineLogic> {
             TextButton(
               child: Text(AppLocalizations.logOut),
               onPressed: () {
-                TokenUtil().clearToken();
+                BaseInfoBox.instance.token = null;
                 Get.offAllNamed(AppRoutes.login);
               },
             ),
@@ -51,7 +51,7 @@ class MinePage extends GetView<MineLogic> {
               },
             ),
             TextButton(
-              child:  Text(AppLocalizations.followSystem),
+              child: Text(AppLocalizations.followSystem),
               onPressed: () {
                 ThemeController().themeFollowSystem();
               },

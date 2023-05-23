@@ -63,6 +63,10 @@ class _GetXAppState extends State<GetXApp> {
       translations: TranslationImpl(),
       locale: Get.deviceLocale,
       localizationsDelegates: delegates,
+      onGenerateRoute: (RouteSettings settings) {
+        AppPages.handleOnGenerateRoute(settings);
+        return null;
+      },
     );
   }
 }

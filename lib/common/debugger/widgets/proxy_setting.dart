@@ -22,7 +22,7 @@ class _ProxySettingState extends State<ProxySetting> {
   @override
   void initState() {
     super.initState();
-    final tp = RequestClient().getProxy();
+    final tp = RequestClient.instance.getProxy();
     ipEdit.text = tp.item1 ?? "";
     portEdit.text = "${tp.item2 ?? ''}";
   }
@@ -37,12 +37,12 @@ class _ProxySettingState extends State<ProxySetting> {
       showToast("端口格式有误！");
       return;
     }
-    await RequestClient().setProxy(ipEdit.text, port);
+    await RequestClient.instance.setProxy(ipEdit.text, port);
     showToast("设置成功");
   }
 
   void clearProxy() async {
-    await RequestClient().clearProxy();
+    await RequestClient.instance.clearProxy();
     ipEdit.text = "";
     portEdit.text = "";
     showToast("清理成功");
@@ -54,7 +54,7 @@ class _ProxySettingState extends State<ProxySetting> {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(children: [
         Row(children: [
-          Text(
+          const Text(
             "代理地址：",
             style: TextStyle(fontSize: 14, color: Colors.black),
           ),
@@ -78,9 +78,9 @@ class _ProxySettingState extends State<ProxySetting> {
             ),
           ),
         ]),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(children: [
-          Text(
+          const Text(
             "代理端口：",
             style: TextStyle(fontSize: 14, color: Colors.black),
           ),

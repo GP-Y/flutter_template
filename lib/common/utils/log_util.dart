@@ -14,9 +14,9 @@ typedef LogFunction = void Function(
 typedef Supplier<T> = FutureOr<T> Function();
 
 class LogUtil {
-  const LogUtil._();
-
   static const String logTag = 'LOG';
+
+  const LogUtil._();
 
   static StreamController<LogEvent>? _controller;
 
@@ -39,7 +39,8 @@ class LogUtil {
     StackTrace? stackTrace,
     int level = 1,
   }) {
-    tag = tag ?? (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
+    tag = tag ??
+        (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
     _printLog(message, '$tag ❕', stackTrace, level: Level.CONFIG);
   }
 
@@ -49,7 +50,8 @@ class LogUtil {
     StackTrace? stackTrace,
     int level = 1,
   }) {
-    tag = tag ?? (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
+    tag = tag ??
+        (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
     _printLog(message, '$tag 📣', stackTrace, level: Level.INFO);
   }
 
@@ -59,7 +61,8 @@ class LogUtil {
     StackTrace? stackTrace,
     int level = 1,
   }) {
-    tag = tag ?? (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
+    tag = tag ??
+        (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
     _printLog(message, '$tag ⚠️', stackTrace, level: Level.WARNING);
   }
 
@@ -91,7 +94,8 @@ class LogUtil {
     int level = 1,
     bool report = true,
   }) {
-    tag = tag ?? (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
+    tag = tag ??
+        (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
     _printLog(
       message,
       '$tag ❌',
@@ -109,7 +113,8 @@ class LogUtil {
     StackTrace? stackTrace,
     int level = 1,
   }) {
-    tag = tag ?? (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
+    tag = tag ??
+        (kDebugMode ? getStackTraceId(StackTrace.current, level) : logTag);
     _printLog(message, '$tag 💠', stackTrace);
   }
 
@@ -150,7 +155,8 @@ class LogUtil {
         time: time,
         name: tag,
         level: level.value,
-        stackTrace: stackTrace ?? (isError && withStackTrace ? StackTrace.current : null),
+        stackTrace: stackTrace ??
+            (isError && withStackTrace ? StackTrace.current : null),
       );
     }
   }

@@ -29,8 +29,8 @@ class TextStyles {
   );
 
   static TextStyle defaultHintStyle = TextStyle(
-    fontSize: FontSizes.size14,
     color: Colors.grey,
+    fontSize: FontSizes.size14,
   );
 }
 

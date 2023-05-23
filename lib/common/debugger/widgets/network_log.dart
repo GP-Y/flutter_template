@@ -8,7 +8,7 @@ import 'package:get_template/common/utils/utils.dart';
 /// @fileName: network_service
 /// @date: 2023/2/23 15:55
 /// @author clover
-/// @description: 网络服务
+/// @description: 网络请求日志
 
 const String _networkEventStartTime = "NetworkEventStartTime";
 const String _networkEventEndTime = "NetworkEventEndTime";
@@ -60,7 +60,7 @@ class _NetworkLogState extends State<NetworkLog> {
           mini: true,
           child: const Icon(Icons.delete, color: Colors.white),
         ),
-      )
+      ),
     ]);
   }
 
@@ -82,14 +82,13 @@ class NetworkService {
 
   static void init() {
     LogUtil.i('NetworkServices init');
-    if (_instance == null) {
-      _instance = NetworkService._();
-    }
+    _instance ??= NetworkService._();
   }
 
   static NetworkService? _instance;
 
-  static NetworkLogInterceptor _networkLogInterceptor = NetworkLogInterceptor();
+  static final NetworkLogInterceptor _networkLogInterceptor =
+      NetworkLogInterceptor();
 
   static List<Response> responseList = [];
 
@@ -227,7 +226,13 @@ class _ResponseCardState extends State<_ResponseCard> {
   Widget _infoContent(BuildContext context) {
     return Row(
       children: <Widget>[
-        Text(_startTime.hms()),
+        Text(
+          _startTime.hms(),
+          style: const TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         const SizedBox(width: 6),
         Container(
           padding: const EdgeInsets.symmetric(
@@ -235,21 +240,32 @@ class _ResponseCardState extends State<_ResponseCard> {
             vertical: 1,
           ),
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3),
             color: _statusColor,
+            borderRadius: BorderRadius.circular(3),
           ),
           child: Text(
             _statusCode.toString(),
-            style: const TextStyle(color: Colors.white, fontSize: 12),
+            style: const TextStyle(color: Colors.black, fontSize: 12),
           ),
         ),
         const SizedBox(width: 6),
         Text(
           _method,
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
         ),
         const SizedBox(width: 6),
-        Text('${_duration.inMilliseconds}ms'),
+        Text(
+          '${_duration.inMilliseconds}ms',
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         const Spacer(),
         _detailButton(context),
       ],
@@ -339,9 +355,16 @@ class _TagText extends StatelessWidget {
       children: <TextSpan>[
         TextSpan(
           text: '$tag: ',
-          style: const TextStyle(fontWeight: FontWeight.bold),
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+            fontWeight: FontWeight.bold,
+          ),
         ),
-        TextSpan(text: content.notBreak),
+        TextSpan(
+          text: content.notBreak,
+          style: const TextStyle(color: Colors.black, fontSize: 14),
+        ),
       ],
     );
   }

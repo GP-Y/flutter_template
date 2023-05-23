@@ -16,7 +16,7 @@ abstract class TestApi {
   Future<String?> test(String param1);
 
   /// 使用账号密码登录
-  Future<Login?> phoneAndPasswordLogin(String phone, String password);
+  Future<Login?> login(String phone, String password);
 }
 
 /// api实现
@@ -52,7 +52,7 @@ class _TestApiImpl with Request implements TestApi {
 
   /// 账号密码登录请求方法
   @override
-  Future<Login?> phoneAndPasswordLogin(String phone, String password) async {
+  Future<Login?> login(String phone, String password) async {
     final ApiResult? result = await simplePost(
       _loginUrl,
       data: {'username': phone, 'password': password},

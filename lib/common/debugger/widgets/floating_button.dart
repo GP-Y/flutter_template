@@ -140,7 +140,7 @@ class DebugTabContainer extends StatelessWidget {
       ),
       child: DefaultTabController(
         length: 3,
-        child: Column(children: [
+        child: Column(children: const [
           Padding(
             padding: EdgeInsets.symmetric(vertical: 8.0),
             child: TabBar(

@@ -13,7 +13,7 @@ export 'client.dart';
 typedef RequestHandler = Future<ApiResult?> Function(CancelToken? cancelToken);
 
 mixin Request {
-  RequestClient get client => RequestClient();
+  RequestClient get client => RequestClient.instance;
 
   /// [cache] 是否需要缓存
   /// [loading] 是否需要loading覆盖
@@ -115,11 +115,14 @@ mixin Request {
         showLoading(cancelToken);
       }
       final result = await handler(cancelToken);
-      if (loading) closeLoading();
+      if (loading) {
+        closeLoading();
+      }
       if (result != null && handleResult) {
         return await _handleResult(result, toastError);
+      } else {
+        return result;
       }
-      return result;
     } catch (e) {
       if (loading) closeLoading();
       if (toastError) toastErrorMessage(e);
@@ -161,19 +164,19 @@ mixin Request {
     }
   }
 
+  /// 处理请求结果
+  Future<ApiResult?> _handleResult(ApiResult result, bool toastError) async {
+    return result;
+  }
+
   /// 请求出错弹窗
   void toastErrorMessage(dynamic e) {
     if (e is DioError) {
-      Get.snackbar("请求错误", e.message??'');
+      Get.snackbar("请求错误", e.message ?? '');
     } else if (e is RequestError) {
       Get.snackbar("请求错误", e.message);
     } else {
       Get.snackbar("请求错误", "$e");
     }
-  }
-
-  /// 处理请求结果
-  Future<ApiResult?> _handleResult(ApiResult result, bool toastError) async {
-    return result;
   }
 }

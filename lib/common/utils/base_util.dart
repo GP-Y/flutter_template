@@ -1,11 +1,15 @@
 // 项目中常用的工具类
-class BaseUtil{
+import 'package:get/get.dart';
+
+import '../../widgets/widgets.dart';
+
+class BaseUtil {
   BaseUtil._();
 
   /// 验证ip地址
   static bool checkIp(String ip) {
     return RegExp(
-        r'((25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))')
+            r'((25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))')
         .hasMatch(ip);
   }
 
@@ -29,5 +33,18 @@ class BaseUtil{
     String regPassword = r'^\w{6,20}$';
     if (password.isEmpty) return false;
     return RegExp(regPassword).hasMatch(password);
+  }
+
+  /// 显示loading
+  static void showLoading({bool barrierDismissible = false}) {
+    Get.dialog(
+      const LoadingWidget(),
+      barrierDismissible: barrierDismissible,
+    );
+  }
+
+  /// 关闭loading
+  static void closeLoading() {
+    if (Get.isDialogOpen == true) Get.close(1);
   }
 }

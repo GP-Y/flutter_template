@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:get_template/common/hive/base_info_box.dart';
 import 'package:get_template/common/utils/utils.dart';
-import 'token_util.dart';
 
 /// @fileName: interceptor
 /// @date: 2023/2/9 01:29
@@ -10,15 +10,18 @@ import 'token_util.dart';
 class AuthInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    final token = TokenUtil().getToken();
-    options.headers.putIfAbsent("Authorization", () => "$token");
+    final token = BaseInfoBox.instance.token;
+    options.headers.putIfAbsent("x-platform-version", () => "app-2.0.0");
+    if (token != null) {
+      options.headers.putIfAbsent("Authorization", () => "Bearer $token");
+    }
     super.onRequest(options, handler);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    //todo 处理token过期，被踢出等特殊事件
-    LogUtil.i('onResponse');
+    ///todo 处理token过期，被踢出等特殊事件
+    LogUtil.i(response.data);
     super.onResponse(response, handler);
   }
 
