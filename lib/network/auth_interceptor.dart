@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:get_template/common/hive/base_info_box.dart';
-import 'package:get_template/common/utils/utils.dart';
+import 'package:getx_app/common/hive/base_info_box.dart';
+import 'package:getx_app/common/utils/utils.dart';
 
 /// @fileName: interceptor
 /// @date: 2023/2/9 01:29

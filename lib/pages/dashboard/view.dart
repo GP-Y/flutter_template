@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_template/pages/shop/view.dart';
+import 'package:getx_app/pages/shop/view.dart';
 
 import '../../gen/assets.gen.dart';
 import '../../l10n/localizations.dart';

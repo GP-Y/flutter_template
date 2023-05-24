@@ -1,4 +1,4 @@
-import 'package:get_template/common/hive/base_info_box.dart';
+import 'package:getx_app/common/hive/base_info_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../queue/initialize_queue.dart';

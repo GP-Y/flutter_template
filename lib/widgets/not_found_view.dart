@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_template/widgets/lazy_load_image.dart';
+import 'package:getx_app/widgets/lazy_load_image.dart';
 
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({Key? key}) : super(key: key);

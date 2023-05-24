@@ -3,9 +3,9 @@ import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 import 'package:dio_cache_interceptor_hive_store/dio_cache_interceptor_hive_store.dart';
-import 'package:get_template/common/hive/base_info_box.dart';
-import 'package:get_template/common/utils/utils.dart';
-import 'package:get_template/config.dart';
+import 'package:getx_app/common/hive/base_info_box.dart';
+import 'package:getx_app/common/utils/utils.dart';
+import 'package:getx_app/config.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tuple/tuple.dart';
 

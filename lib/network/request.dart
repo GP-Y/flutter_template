@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get_template/network/client.dart';
+import 'package:getx_app/network/client.dart';
 import 'package:get/get.dart';
 import 'package:dio_cache_interceptor/dio_cache_interceptor.dart';
 export 'client.dart';

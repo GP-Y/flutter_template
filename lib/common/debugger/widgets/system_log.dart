@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get_template/common/utils/utils.dart';
+import 'package:getx_app/common/utils/utils.dart';
 
 /// @fileName: log_service
 /// @date: 2023/2/9 11:04

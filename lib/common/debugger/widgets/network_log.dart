@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get_template/common/utils/utils.dart';
+import 'package:getx_app/common/utils/utils.dart';
 
 /// @fileName: network_service
 /// @date: 2023/2/23 15:55

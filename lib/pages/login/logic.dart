@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_template/common/hive/base_info_box.dart';
-import 'package:get_template/common/logic/base_controller.dart';
-import 'package:get_template/common/utils/utils.dart';
-import 'package:get_template/network/api/test_api.dart';
+import 'package:getx_app/common/hive/base_info_box.dart';
+import 'package:getx_app/common/logic/base_controller.dart';
+import 'package:getx_app/common/utils/utils.dart';
+import 'package:getx_app/network/api/test_api.dart';
 
 import '../../models/login/login.dart';
 import '../../router/app_pages.dart';

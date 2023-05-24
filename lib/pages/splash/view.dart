@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get_template/router/app_pages.dart';
+import 'package:getx_app/router/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../../l10n/localizations.dart';

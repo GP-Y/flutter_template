@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get_template/common/common.dart';
-import 'package:get_template/widgets/not_found_view.dart';
+import 'package:getx_app/common/common.dart';
+import 'package:getx_app/widgets/not_found_view.dart';
 
 import '../pages/dashboard/binding.dart';
 import '../pages/dashboard/view.dart';

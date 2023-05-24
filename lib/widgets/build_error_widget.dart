@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_template/common/utils/utils.dart';
+import 'package:getx_app/common/utils/utils.dart';
 
 class BuildErrorWidget extends StatelessWidget {
   const BuildErrorWidget._(this.details, {Key? key}) : super(key: key);

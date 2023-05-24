@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:get_template/common/common.dart';
-import 'package:get_template/network/client.dart';
-import 'package:get_template/widgets/widgets.dart';
+import 'package:getx_app/common/common.dart';
+import 'package:getx_app/network/client.dart';
+import 'package:getx_app/widgets/widgets.dart';
 
 import 'app.dart';
 import 'common/hive/getx_hive_box.dart';

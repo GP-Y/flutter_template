@@ -1,5 +1,5 @@
-import 'package:get_template/models/login/login.dart';
-import 'package:get_template/network/request.dart';
+import 'package:getx_app/models/login/login.dart';
+import 'package:getx_app/network/request.dart';
 
 /// @fileName: test_api
 /// @date: 2023/2/9 01:29

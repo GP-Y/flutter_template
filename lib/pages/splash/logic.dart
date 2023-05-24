@@ -1,6 +1,6 @@
 import 'dart:async';
-import 'package:get_template/common/logic/base_controller.dart';
-import 'package:get_template/router/app_pages.dart';
+import 'package:getx_app/common/logic/base_controller.dart';
+import 'package:getx_app/router/app_pages.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';

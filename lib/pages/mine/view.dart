@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:get_template/common/common.dart';
-import 'package:get_template/common/hive/base_info_box.dart';
-import 'package:get_template/router/app_pages.dart';
+import 'package:getx_app/common/common.dart';
+import 'package:getx_app/common/hive/base_info_box.dart';
+import 'package:getx_app/router/app_pages.dart';
 import 'package:get/get.dart';
-import 'package:get_template/widgets/custom_app_bar.dart';
+import 'package:getx_app/widgets/custom_app_bar.dart';
 
 import '../../l10n/localizations.dart';
 import 'logic.dart';

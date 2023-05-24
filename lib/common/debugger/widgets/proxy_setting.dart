@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get_template/common/utils/utils.dart';
-import 'package:get_template/network/request.dart';
+import 'package:getx_app/common/utils/utils.dart';
+import 'package:getx_app/network/request.dart';
 import 'package:oktoast/oktoast.dart';
 
 /// @fileName: proxy_setting

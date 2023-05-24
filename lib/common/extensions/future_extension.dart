@@ -1,4 +1,4 @@
-import 'package:get_template/common/common.dart';
+import 'package:getx_app/common/common.dart';
 
 /// @fileName: future_extension
 /// @date: 2023/4/22 16:51

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get_template/common/common.dart';
+import 'package:getx_app/common/common.dart';
 
 /// @fileName: Theme_kit
 /// @date: 2023/2/24 16:42

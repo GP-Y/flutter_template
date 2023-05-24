@@ -1,4 +1,4 @@
-import 'package:get_template/common/common.dart';
+import 'package:getx_app/common/common.dart';
 
 /// @fileName: initialize_queue
 /// @date: 2023/4/20 23:16

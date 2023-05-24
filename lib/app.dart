@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get_template/common/common.dart';
-import 'package:get_template/router/app_pages.dart';
+import 'package:getx_app/common/common.dart';
+import 'package:getx_app/router/app_pages.dart';
 import 'package:oktoast/oktoast.dart';
 
 import 'l10n/translation_impl.dart';
@@ -49,7 +49,7 @@ class _GetXAppState extends State<GetXApp> {
 
   Widget _buildApp() {
     return GetMaterialApp(
-      title: 'getx宇宙',
+      title: 'getx app',
       theme: themeLight,
       darkTheme: themeDark,
       themeMode: ThemeController().currentTheme(),

@@ -1,5 +1,5 @@
-import 'package:get_template/common/logic/base_controller.dart';
-import 'package:get_template/common/themes/themes.dart';
+import 'package:getx_app/common/logic/base_controller.dart';
+import 'package:getx_app/common/themes/themes.dart';
 import 'package:get/get.dart';
 
 class HomeLogic extends BaseController {
